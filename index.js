@@ -37,5 +37,13 @@ function OmxController (filename, initialVolume) {
   }
 }
 
-callbackAtTime('15:58', console.log)
+function omxPlayFadeIn (filename, fadeInDurationMs) {
+  var controller = new OmxController(filename, -3000)
+  var fadeSteps = 7
 
+  var intervalDuration = fadeInDurationMs / fadeSteps
+
+  var ix = setInterval(function () {
+    controller.volumeUp()
+  }, intervalDuration)
+}
